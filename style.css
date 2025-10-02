@@ -1,0 +1,12 @@
+body {
+    background: url('https://i.gifer.com/origin/3d/3d98f1ae8e1aa1d86c6d8e062c6b6f2f.gif') repeat;
+    background-size: cover;
+    color: white;
+    font-family: 'Courier New', monospace;
+}
+div.stButton > button {
+    background-color: #00cc66;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+}
