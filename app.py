@@ -5,11 +5,12 @@ import json
 # 🌱 Game Title
 st.title("🌍 NASA Sustainable Farming Guessing Game")
 
-# 🎮 Game background (CSS for pixel/game style)
+# 🎮 Animated Pixel Background
 st.markdown("""
 <style>
 body {
-    background-color: #1a1a1a;
+    background: url('https://i.gifer.com/origin/3d/3d98f1ae8e1aa1d86c6d8e062c6b6f2f.gif') repeat;
+    background-size: cover;
     color: white;
     font-family: 'Courier New', monospace;
 }
@@ -17,6 +18,7 @@ div.stButton > button {
     background-color: #00cc66;
     color: white;
     font-weight: bold;
+    border-radius: 5px;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -28,7 +30,7 @@ This game uses **NASA open data concepts** (NDVI, rainfall, soil moisture, tempe
 Your mission: Guess the correct answers, learn, and improve sustainable farming knowledge! 🌱
 """)
 
-# Load questions from JSON
+# Load questions
 with open("questions.json", "r") as f:
     questions = json.load(f)
 
@@ -37,7 +39,7 @@ if "questions_shuffled" not in st.session_state:
     random.shuffle(questions)
     st.session_state.questions_shuffled = questions
 
-# Initialize session state variables
+# Initialize session state
 if "score" not in st.session_state:
     st.session_state.score = 0
 if "level" not in st.session_state:
@@ -46,9 +48,10 @@ if "level_index" not in st.session_state:
     st.session_state.level_index = 0
 if "question_index" not in st.session_state:
     st.session_state.question_index = 0
+if "submit_clicked" not in st.session_state:
+    st.session_state.submit_clicked = False
 
-# Define questions per level
-questions_per_level = [3, 5, 6, 6, 7, 7, 8, 8, 9, 10]  # Example: Level 1 = 3 questions, Level 2 = 5...
+questions_per_level = [3, 5, 6, 6, 7, 7, 8, 8, 9, 10]
 
 # Game loop
 if st.session_state.level <= 10:
@@ -59,16 +62,20 @@ if st.session_state.level <= 10:
         st.subheader(f"Level {st.session_state.level} — Question {st.session_state.question_index + 1}")
 
         st.write(q["question"])
-        choice = st.radio("Choose an answer:", q["options"], key=f"q{st.session_state.level}_{st.session_state.question_index}")
+        choice = st.radio("Choose an answer:", q["options"], key=f"q{st.session_state.level}_{st.session_state.question_index})
 
         if st.button("Submit Answer"):
+            st.session_state.submit_clicked = True
+
+        if st.session_state.submit_clicked:
             if choice == q["answer"]:
                 st.success("✅ Correct!")
                 st.session_state.score += 10
             else:
                 st.error(f"❌ Wrong. Correct answer: {q['answer']}")
-            
+
             st.session_state.question_index += 1
+            st.session_state.submit_clicked = False
             st.experimental_rerun()
 
     else:
