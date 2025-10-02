@@ -30,7 +30,6 @@ def set_background(url):
 # 🌱 Game Title & Description
 # ------------------------------
 st.title("🌍 NASA Sustainable Farming Guessing Game")
-
 st.markdown("""
 Agriculture is at the core of the global food supply, but faces challenges from climate change and resource use.  
 This game uses **NASA open data concepts** (NDVI, rainfall, soil moisture, temperature) to simulate farming challenges.  
@@ -45,12 +44,6 @@ backgrounds = [
     "https://i.gifer.com/origin/9b/9b6f8bda9266b0e5bb0c8a8472e3b5d2.gif",
     "https://i.gifer.com/origin/7c/7c9c1e1f8e60cdcd3cf2dfd2d0e6b6a6.gif",
     "https://i.gifer.com/origin/6f/6f8e3e5b1f5e2cf1a3c6e3b2d2d3f1a9.gif",
-    "https://i.gifer.com/origin/5e/5e8e6e4b8f8b9d6a3c9f5b3c2d2e8a2d.gif",
-    "https://i.gifer.com/origin/4d/4d7f8f6a9b9c2d1f3b6a8e7d6c5b2a1e.gif",
-    "https://i.gifer.com/origin/3b/3b9f6e7a8b7c9d1f6e4b2c3a1d5e6f7a.gif",
-    "https://i.gifer.com/origin/2a/2a6e7f8a9b8c7d6e5a4b3c2d1f0a9e8b.gif",
-    "https://i.gifer.com/origin/1c/1c8f7e6a5b4c3d2e1f0a9b8c7d6e5f4a.gif",
-    "https://i.gifer.com/origin/0b/0b7a8f6e5d4c3b2a1f0e9d8c7b6a5f4e.gif"
 ]
 
 # ------------------------------
@@ -78,57 +71,65 @@ if st.session_state.difficulty is None:
         st.session_state.level = 1
         st.session_state.level_index = 0
         st.session_state.question_index = 0
+        st.session_state.answered = False
+        st.session_state.next_question = False
         st.experimental_rerun()
 
 # ------------------------------
-# Game Logic (only if difficulty is set)
+# Game Logic
 # ------------------------------
 if st.session_state.difficulty is not None:
     if st.session_state.difficulty == "Easy":
         questions_per_level = [2, 3, 3, 4, 4, 5, 5, 5, 6, 6]
     elif st.session_state.difficulty == "Medium":
         questions_per_level = [3, 5, 6, 6, 7, 7, 8, 8, 9, 10]
-    else:  # Hard
+    else:
         questions_per_level = [4, 6, 7, 7, 8, 8, 9, 9, 10, 12]
 
-    # Apply background
+    # Background per level
     current_level_index = st.session_state.level - 1
     if current_level_index < len(backgrounds):
         set_background(backgrounds[current_level_index])
 
-    if "score" not in st.session_state:
-        st.session_state.score = 0
-    if "level" not in st.session_state:
-        st.session_state.level = 1
-    if "level_index" not in st.session_state:
-        st.session_state.level_index = 0
-    if "question_index" not in st.session_state:
-        st.session_state.question_index = 0
+    # Show score
+    st.write(f"**Score:** {st.session_state.score}")
 
     if st.session_state.level <= 10:
         num_questions = questions_per_level[st.session_state.level - 1]
 
         if st.session_state.question_index < num_questions:
-            q = st.session_state.questions_shuffled[st.session_state.level_index + st.session_state.question_index]
+            q = st.session_state.questions_shuffled[
+                st.session_state.level_index + st.session_state.question_index
+            ]
             st.subheader(f"Level {st.session_state.level} — Question {st.session_state.question_index + 1}")
             st.write(q["question"])
 
             choice = st.radio("Choose an answer:", q["options"], key=f"q{st.session_state.level}_{st.session_state.question_index}")
 
-            if st.button("Submit Answer", key=f"submit_{st.session_state.level}_{st.session_state.question_index}"):
-                if choice == q["answer"]:
-                    st.success("✅ Correct!")
-                    st.session_state.score += 10
-                else:
-                    st.error(f"❌ Wrong. Correct answer: {q['answer']}")
+            # Submit Answer
+            if not st.session_state.answered:
+                if st.button("Submit Answer", key=f"submit_{st.session_state.level}_{st.session_state.question_index}"):
+                    if choice == q["answer"]:
+                        st.success("✅ Correct!")
+                        st.session_state.score += 10
+                    else:
+                        st.error(f"❌ Wrong. Correct answer: {q['answer']}")
+                    st.session_state.answered = True
 
-                st.session_state.question_index += 1
+            # Next Question button
+            if st.session_state.answered:
+                if st.button("Next Question"):
+                    st.session_state.question_index += 1
+                    st.session_state.answered = False
+                    st.session_state.next_question = True
+
+            if st.session_state.next_question:
+                st.session_state.next_question = False
                 st.experimental_rerun()
 
         else:
             st.success(f"🎯 Level {st.session_state.level} Complete!")
             st.write(f"Score: {st.session_state.score}")
-
             if st.button("Next Level"):
                 st.session_state.level_index += questions_per_level[st.session_state.level - 1]
                 st.session_state.level += 1
