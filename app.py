@@ -63,75 +63,82 @@ if "questions_shuffled" not in st.session_state:
     st.session_state.questions_shuffled = questions
 
 # ------------------------------
-# Game State Initialization
+# Difficulty Selection
 # ------------------------------
-if "score" not in st.session_state:
-    st.session_state.score = 0
-if "level" not in st.session_state:
-    st.session_state.level = 1
-if "level_index" not in st.session_state:
-    st.session_state.level_index = 0
-if "question_index" not in st.session_state:
-    st.session_state.question_index = 0
-if "submit_clicked" not in st.session_state:
-    st.session_state.submit_clicked = False
+if "difficulty" not in st.session_state:
+    difficulty = st.radio("Select Difficulty:", ["Easy", "Medium", "Hard"])
+    if st.button("Start Game"):
+        st.session_state.difficulty = difficulty
+        st.experimental_rerun()
 
-questions_per_level = [3, 5, 6, 6, 7, 7, 8, 8, 9, 10]
+if "difficulty" in st.session_state:
+    # ------------------------------
+    # Adjust questions per level based on difficulty
+    # ------------------------------
+    if st.session_state.difficulty == "Easy":
+        questions_per_level = [2, 3, 3, 4, 4, 5, 5, 5, 6, 6]
+    elif st.session_state.difficulty == "Medium":
+        questions_per_level = [3, 5, 6, 6, 7, 7, 8, 8, 9, 10]
+    else:  # Hard
+        questions_per_level = [4, 6, 7, 7, 8, 8, 9, 9, 10, 12]
 
-# ------------------------------
-# Apply Dynamic Background
-# ------------------------------
-current_level_index = st.session_state.level - 1
-if current_level_index < len(backgrounds):
-    set_background(backgrounds[current_level_index])
-else:
-    set_background(backgrounds[0])
+    # ------------------------------
+    # Game State Initialization
+    # ------------------------------
+    if "score" not in st.session_state:
+        st.session_state.score = 0
+    if "level" not in st.session_state:
+        st.session_state.level = 1
+    if "level_index" not in st.session_state:
+        st.session_state.level_index = 0
+    if "question_index" not in st.session_state:
+        st.session_state.question_index = 0
 
-# ------------------------------
-# Game Loop
-# ------------------------------
-if st.session_state.level <= 10:
-    num_questions = questions_per_level[st.session_state.level - 1]
+    # ------------------------------
+    # Apply Dynamic Background
+    # ------------------------------
+    current_level_index = st.session_state.level - 1
+    if current_level_index < len(backgrounds):
+        set_background(backgrounds[current_level_index])
+    else:
+        set_background(backgrounds[0])
 
-    if st.session_state.question_index < num_questions:
-        q = st.session_state.questions_shuffled[st.session_state.level_index + st.session_state.question_index]
-        st.subheader(f"Level {st.session_state.level} — Question {st.session_state.question_index + 1}")
-        st.write(q["question"])
+    # ------------------------------
+    # Game Loop
+    # ------------------------------
+    if st.session_state.level <= 10:
+        num_questions = questions_per_level[st.session_state.level - 1]
 
-        choice = st.radio("Choose an answer:", q["options"], key=f"q{st.session_state.level}_{st.session_state.question_index}")
+        if st.session_state.question_index < num_questions:
+            q = st.session_state.questions_shuffled[st.session_state.level_index + st.session_state.question_index]
+            st.subheader(f"Level {st.session_state.level} — Question {st.session_state.question_index + 1}")
+            st.write(q["question"])
 
-        if st.button("Submit Answer"):
-            st.session_state.submit_clicked = True
+            choice = st.radio("Choose an answer:", q["options"], key=f"q{st.session_state.level}_{st.session_state.question_index}")
 
-        if st.session_state.submit_clicked:
-            if choice == q["answer"]:
-                st.success("✅ Correct!")
-                st.session_state.score += 10
-            else:
-                st.error(f"❌ Wrong. Correct answer: {q['answer']}")
+            if st.button("Submit Answer"):
+                if choice == q["answer"]:
+                    st.success("✅ Correct!")
+                    st.session_state.score += 10
+                else:
+                    st.error(f"❌ Wrong. Correct answer: {q['answer']}")
 
-            st.session_state.question_index += 1
-            st.session_state.submit_clicked = False
-            st.experimental_rerun()
+                st.session_state.question_index += 1
+                st.experimental_rerun()
+
+        else:
+            st.success(f"🎯 Level {st.session_state.level} Complete!")
+            st.write(f"Score: {st.session_state.score}")
+
+            if st.button("Next Level"):
+                st.session_state.level_index += questions_per_level[st.session_state.level - 1]
+                st.session_state.level += 1
+                st.session_state.question_index = 0
+                st.experimental_rerun()
 
     else:
-        st.success(f"🎯 Level {st.session_state.level} Complete!")
-        st.write(f"Score: {st.session_state.score}")
-
-        if st.button("Next Level"):
-            st.session_state.level_index += questions_per_level[st.session_state.level - 1]
-            st.session_state.level += 1
-            st.session_state.question_index = 0
+        st.success("🏆 Game Over!")
+        st.write(f"Your final score: {st.session_state.score}")
+        if st.button("Play Again"):
+            st.session_state.clear()
             st.experimental_rerun()
-
-else:
-    st.success("🏆 Game Over!")
-    st.write(f"Your final score: {st.session_state.score}")
-    if st.button("Play Again"):
-        st.session_state.score = 0
-        st.session_state.level = 1
-        st.session_state.level_index = 0
-        st.session_state.question_index = 0
-        random.shuffle(questions)
-        st.session_state.questions_shuffled = questions
-        st.experimental_rerun()
