@@ -1,0 +1,247 @@
+[
+  {
+    "question": "If NDVI is 0.1, what does it usually indicate?",
+    "options": ["Dense green vegetation", "Bare soil", "Healthy crops"],
+    "answer": "Bare soil"
+  },
+  {
+    "question": "High NDVI values (>0.7) usually mean?",
+    "options": ["Dense green vegetation", "Dry soil", "Desert area"],
+    "answer": "Dense green vegetation"
+  },
+  {
+    "question": "NASA POWER shows 5 mm rainfall in a week. Without irrigation, yield will?",
+    "options": ["Increase", "Decrease", "Stay the same"],
+    "answer": "Decrease"
+  },
+  {
+    "question": "Soil moisture is crucial for crops because?",
+    "options": ["It reduces pests", "It supplies water to roots", "It increases temperature"],
+    "answer": "It supplies water to roots"
+  },
+  {
+    "question": "If temperature exceeds 40°C, crops will?",
+    "options": ["Grow faster", "Reduce yield", "Not be affected"],
+    "answer": "Reduce yield"
+  },
+  {
+    "question": "If rainfall is above 100 mm in one week, likely effect is?",
+    "options": ["Drought stress", "Flooding risk", "Higher NDVI"],
+    "answer": "Flooding risk"
+  },
+  {
+    "question": "Which NASA dataset provides solar radiation data?",
+    "options": ["MODIS", "POWER", "Landsat"],
+    "answer": "POWER"
+  },
+  {
+    "question": "Cows under heat stress will produce?",
+    "options": ["More milk", "Less milk", "The same milk"],
+    "answer": "Less milk"
+  },
+  {
+    "question": "NDVI values near zero indicate?",
+    "options": ["Bare soil or dry land", "Lush crops", "Forests"],
+    "answer": "Bare soil or dry land"
+  },
+  {
+    "question": "Why do farmers monitor evapotranspiration?",
+    "options": ["To measure pest damage", "To estimate water loss", "To calculate soil nutrients"],
+    "answer": "To estimate water loss"
+  },
+  {
+    "question": "Which factor affects irrigation needs the most?",
+    "options": ["Soil nutrients", "Rainfall and temperature", "Crop color"],
+    "answer": "Rainfall and temperature"
+  },
+  {
+    "question": "Low NDVI values in mid-season crops may mean?",
+    "options": ["Pest stress", "Good irrigation", "Healthy growth"],
+    "answer": "Pest stress"
+  },
+  {
+    "question": "NASA satellite MODIS is used to measure?",
+    "options": ["Vegetation indices", "Animal movement", "Fertilizer rates"],
+    "answer": "Vegetation indices"
+  },
+  {
+    "question": "Which crop is most sensitive to drought?",
+    "options": ["Maize", "Olives", "Dates"],
+    "answer": "Maize"
+  },
+  {
+    "question": "If soil is compacted, crops may suffer because?",
+    "options": ["Roots cannot penetrate", "Too much nitrogen", "Temperature drops"],
+    "answer": "Roots cannot penetrate"
+  },
+  {
+    "question": "NASA POWER provides data on?",
+    "options": ["Climate variables", "Crop prices", "Pesticide use"],
+    "answer": "Climate variables"
+  },
+  {
+    "question": "A farmer sees declining NDVI. Likely cause?",
+    "options": ["Good rainfall", "Crop stress", "Fertile soil"],
+    "answer": "Crop stress"
+  },
+  {
+    "question": "Livestock need shade in hot weather because?",
+    "options": ["To save water", "To avoid heat stress", "To produce more milk"],
+    "answer": "To avoid heat stress"
+  },
+  {
+    "question": "NDVI close to 1.0 usually means?",
+    "options": ["Water bodies", "Dense vegetation", "Bare soil"],
+    "answer": "Dense vegetation"
+  },
+  {
+    "question": "Drought reduces crop yields mainly because?",
+    "options": ["Roots grow deeper", "Photosynthesis slows", "Crops get too cold"],
+    "answer": "Photosynthesis slows"
+  },
+  {
+    "question": "Why do farmers use weather forecasts?",
+    "options": ["To decide irrigation timing", "To change soil color", "To avoid fertilizers"],
+    "answer": "To decide irrigation timing"
+  },
+  {
+    "question": "Excess nitrogen fertilizer can cause?",
+    "options": ["Water pollution", "Lower yield", "Stronger roots"],
+    "answer": "Water pollution"
+  },
+  {
+    "question": "What does a negative NDVI value mean?",
+    "options": ["Water or snow", "Healthy crops", "Grassland"],
+    "answer": "Water or snow"
+  },
+  {
+    "question": "Satellite imagery helps farmers by?",
+    "options": ["Counting crops", "Monitoring crop health", "Selling seeds"],
+    "answer": "Monitoring crop health"
+  },
+  {
+    "question": "Rainfed agriculture depends mainly on?",
+    "options": ["Fertilizers", "Rainfall", "Livestock"],
+    "answer": "Rainfall"
+  },
+  {
+    "question": "Which factor reduces soil erosion?",
+    "options": ["Bare soil", "Vegetation cover", "High winds"],
+    "answer": "Vegetation cover"
+  },
+  {
+    "question": "Why is NDVI useful?",
+    "options": ["It measures crop greenness", "It shows rainfall", "It tracks livestock"],
+    "answer": "It measures crop greenness"
+  },
+  {
+    "question": "Hot winds during flowering stage cause?",
+    "options": ["More seeds", "Sterility and low yield", "Stronger plants"],
+    "answer": "Sterility and low yield"
+  },
+  {
+    "question": "Which crop can tolerate drought best?",
+    "options": ["Sorghum", "Rice", "Wheat"],
+    "answer": "Sorghum"
+  },
+  {
+    "question": "Too much irrigation can cause?",
+    "options": ["Soil salinity", "More fertility", "Better roots"],
+    "answer": "Soil salinity"
+  },
+  {
+    "question": "If NDVI drops suddenly, it may indicate?",
+    "options": ["Harvesting or crop loss", "Rainfall increase", "New planting"],
+    "answer": "Harvesting or crop loss"
+  },
+  {
+    "question": "In semi-arid areas, main farming challenge is?",
+    "options": ["Too much rain", "Lack of water", "Fertilizer cost"],
+    "answer": "Lack of water"
+  },
+  {
+    "question": "NASA data helps farmers by?",
+    "options": ["Improving decisions", "Selling crops", "Planting seeds"],
+    "answer": "Improving decisions"
+  },
+  {
+    "question": "If heat index rises above 35°C, cows?",
+    "options": ["Produce more milk", "Eat less and give less milk", "Stay the same"],
+    "answer": "Eat less and give less milk"
+  },
+  {
+    "question": "Sustainable farming means?",
+    "options": ["Using resources wisely", "Only using fertilizer", "Ignoring soil"],
+    "answer": "Using resources wisely"
+  },
+  {
+    "question": "NDVI is calculated from?",
+    "options": ["Red & near-infrared light", "Temperature data", "Rainfall records"],
+    "answer": "Red & near-infrared light"
+  },
+  {
+    "question": "Which practice conserves water?",
+    "options": ["Drip irrigation", "Flood irrigation", "Overhead sprinklers"],
+    "answer": "Drip irrigation"
+  },
+  {
+    "question": "If rainfall is below average, farmer should?",
+    "options": ["Increase irrigation", "Stop irrigation", "Use more nitrogen"],
+    "answer": "Increase irrigation"
+  },
+  {
+    "question": "Livestock need more water during?",
+    "options": ["Cold weather", "Hot weather", "Night time"],
+    "answer": "Hot weather"
+  },
+  {
+    "question": "Satellite data helps detect?",
+    "options": ["Soil moisture", "Fertilizer prices", "Market trends"],
+    "answer": "Soil moisture"
+  },
+  {
+    "question": "Which farming method saves soil?",
+    "options": ["Crop rotation", "Burning fields", "Monocropping"],
+    "answer": "Crop rotation"
+  },
+  {
+    "question": "Why do farmers measure rainfall?",
+    "options": ["To schedule irrigation", "To reduce fertilizer", "To check NDVI"],
+    "answer": "To schedule irrigation"
+  },
+  {
+    "question": "What does evapotranspiration combine?",
+    "options": ["Rainfall + humidity", "Soil + roots", "Evaporation + plant transpiration"],
+    "answer": "Evaporation + plant transpiration"
+  },
+  {
+    "question": "Crop yields depend mainly on?",
+    "options": ["Water, nutrients, climate", "Machinery", "Price of seeds"],
+    "answer": "Water, nutrients, climate"
+  },
+  {
+    "question": "Which data helps estimate crop stress?",
+    "options": ["NDVI and rainfall", "Market data", "Fertilizer prices"],
+    "answer": "NDVI and rainfall"
+  },
+  {
+    "question": "NASA satellites provide data that is?",
+    "options": ["Free and open", "Expensive", "Private"],
+    "answer": "Free and open"
+  },
+  {
+    "question": "Cover crops help by?",
+    "options": ["Protecting soil", "Using more water", "Reducing yield"],
+    "answer": "Protecting soil"
+  },
+  {
+    "question": "Sustainable irrigation means?",
+    "options": ["Using water efficiently", "Flooding fields daily", "Ignoring rainfall"],
+    "answer": "Using water efficiently"
+  },
+  {
+    "question": "If MODIS shows low NDVI in July, likely reason?",
+    "options": ["Crop stress or harvest", "Strong growth", "Extra rainfall"],
+    "answer": "Crop stress or harvest"
+  }
+]
